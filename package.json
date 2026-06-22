@@ -1,0 +1,46 @@
+{
+  "name": "newsroom-mcp",
+  "version": "0.1.0",
+  "description": "Type-safe MCP server that is the sole, validating writer to an investigation master-file.json. Enforces the Newsroom master-file schema invariants (Admiralty grading, append-only collection log, publishable/defamation gates) that prompt-based editing cannot guarantee.",
+  "type": "module",
+  "bin": {
+    "newsroom-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "schema"
+  ],
+  "scripts": {
+    "codegen": "node scripts/codegen.mjs",
+    "sync-schema": "node scripts/sync-schema.mjs",
+    "build": "tsup",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepare": "npm run codegen"
+  },
+  "keywords": [
+    "mcp",
+    "investigative-journalism",
+    "newsroom",
+    "chain-of-custody",
+    "json-schema"
+  ],
+  "author": "ehurrn",
+  "license": "Unlicense",
+  "repository": "https://github.com/ehurrn/newsroom-mcp",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "json-schema-to-typescript": "^15.0.3",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
